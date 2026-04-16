@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Load AR Libraries -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    
+    <style>
+      /* Style for the loading screen */
+      #loading-overlay {
+        display: flex; align-items: center; justify-content: center;
+        position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.8); color: white; z-index: 999;
+        font-family: sans-serif; font-size: 1.2rem;
+      }
+      .hidden { display: none !important; }
+    </style>
+  </head>
+  <body>
+    <!-- Initial Loading Screen -->
+    <div id="loading-overlay">
+      <p>正在載入展覽內容... 請稍候</p>
+    </div>
+
+    <!-- The AR Scene -->
+    <a-scene 
+      mindar-image="imageTargetSrc: ./targets.mind; autoStart: true; maxTrack: 5" 
+      vr-mode-ui="enabled: false" 
+      device-orientation-permission-ui="enabled: false">
+      
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- Photo 1 -->
+      
+        <a-plane color="#000" opacity="0.6" position="0 0 0" height="0.4" width="0.9"></a-plane>
+        <a-text value="這是第1張照片的描述內容" color="white" align="center" width="1.5" position="0 0 0.02"></a-text>
+      
+
+      <!-- Photo 2 -->
+      
+        <a-plane color="#000" opacity="0.6" position="0 0 0" height="0.4" width="0.9"></a-plane>
+        <a-text value="這是第2張照片的描述內容" color="white" align="center" width="1.5" position="0 0 0.02"></a-text>
+      
+
+      <!-- Photo 3 -->
+      
+        <a-plane color="#000" opacity="0.6" position="0 0 0" height="0.4" width="0.9"></a-plane>
+        <a-text value="這是第3張照片的描述內容" color="white" align="center" width="1.5" position="0 0 0.02"></a-text>
+      
+
+      <!-- Photo 4 -->
+      
+        <a-plane color="#000" opacity="0.6" position="0 0 0" height="0.4" width="0.9"></a-plane>
+        <a-text value="這是第4張照片的描述內容" color="white" align="center" width="1.5" position="0 0 0.02"></a-text>
+      
+
+      <!-- Photo 5 -->
+      
+        <a-plane color="#000" opacity="0.6" position="0 0 0" height="0.4" width="0.9"></a-plane>
+        <a-text value="這是第5張照片的描述內容" color="white" align="center" width="1.5" position="0 0 0.02"></a-text>
+      
+
+    </a-scene>
+
+    <script>
+      // Hide the loading overlay once the AR system is ready
+      const sceneEl = document.querySelector('a-scene');
+      sceneEl.addEventListener("arReady", (event) => {
+        document.querySelector('#loading-overlay').classList.add('hidden');
+      });
+    </script>
+  </body>
+</html>
